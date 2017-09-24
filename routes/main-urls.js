@@ -42,6 +42,15 @@ router.get('/using-timeout-nodejs', function (req, res) {
     setTimeout(myFunc, 1000, 'funky');
 });
 
+router.get('/using-interval', function (req, res) {
+
+    function intervalFunc() {
+        console.log('Cant stop me now!');
+    }
+
+    setInterval(intervalFunc, 1500);
+});
+
 // define the about route
 router.get('/about', function (req, res) {
     res.send('About birds');
