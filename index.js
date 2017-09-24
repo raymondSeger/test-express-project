@@ -11,7 +11,17 @@ const fs                = require('fs');
 const morgan            = require('morgan');
 const path              = require('path');
 const cookieParser      = require('cookie-parser');
+const session           = require('express-session');
+const FileStore         = require('session-file-store')(session);
 const main_urls         = require('./routes/main-urls');
+
+// use session
+app.use(session({
+    store               : new FileStore(),
+    secret              : 'keyboard cat',
+    resave              : false,
+    saveUninitialized   : true
+}));
 
 // use ORM
 /*

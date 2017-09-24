@@ -9,6 +9,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
     "mkdirp": "^0.5.1",
     "morgan": "^1.8.2",
     "mustache": "^2.3.0",
@@ -16,6 +17,7 @@
     "mysql": "^2.14.1",
     "orm": "^3.2.4",
     "request": "^2.81.0",
+    "session-file-store": "^1.1.2",
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
