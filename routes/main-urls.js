@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
 });
 
 // define the home page route
-router.get('/test-nodejs', function (req, res) {
+router.get('/async-file-read', function (req, res) {
 
     var a = __dirname;
     var b = __filename;
@@ -32,7 +32,7 @@ router.get('/test-nodejs', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
 });
 
-router.get('/using-timeout-nodejs', function (req, res) {
+router.get('/using-timeout', function (req, res) {
 
     function myFunc(arg) {
         console.log(arg);
@@ -49,6 +49,20 @@ router.get('/using-interval', function (req, res) {
     }
 
     setInterval(intervalFunc, 1500);
+});
+
+router.get('/immidiate', function (req, res) {
+
+    console.log('before immediate');
+
+    setImmediate(function(arg){
+        console.log(`executing immediate: ${arg}`);
+    }, 'so immediate');
+
+    console.log('after immediate');
+
+    res.send('test');
+
 });
 
 // define the about route
