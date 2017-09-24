@@ -1,6 +1,7 @@
 const express   = require('express');
 const router    = express.Router();
 const fs        = require('fs');
+const os        = require('os');
 const calculate = require('../my_functions/calculate');
 
 // middleware 1
@@ -17,6 +18,29 @@ router.use(function timeLog2 (req, res, next) {
 
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
+});
+
+router.get('/use-os-functions', function (req, res) {
+
+    let theString = os.EOL;
+    let arch = os.arch();
+    let constants = os.constants;
+    let cpus = os.cpus();
+    let freememory = os.freemem();
+    let homedir = os.homedir();
+    let hostname = os.hostname();
+    let platform = os.platform();
+    let releases = os.release();
+    let tmpdir = os.tmpdir();
+    let totalmemory = os.totalmem();
+    let os_type = os.type();
+    let uptime = os.uptime();
+    let userInfo = os.userInfo;
+
+    // use breakpoiints
+    console.log(theString);
+
+    res.send('use-os-functions');
 });
 
 router.get('/use-external-functions', function (req, res) {
