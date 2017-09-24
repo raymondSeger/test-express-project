@@ -3,9 +3,15 @@ const router    = express.Router();
 const fs        = require('fs');
 const calculate = require('../my_functions/calculate');
 
-// middleware that is specific to this router
+// middleware 1
 router.use(function timeLog (req, res, next) {
     console.log('Time: ', Date.now());
+    next()
+});
+
+// another middleware
+router.use(function timeLog2 (req, res, next) {
+    console.log('Time2: ', Date.now());
     next()
 });
 
