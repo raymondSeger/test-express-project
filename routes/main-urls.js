@@ -29,7 +29,13 @@ router.get('/test-nodejs', function (req, res) {
         var data_in_string_length = data_in_string.length;
     });
 
-    res.render('main', { title: 'Hey', message: 'Hello there!' });
+    function myFunc(arg) {
+        console.log(arg);
+        res.render('main', { title: 'Hey', message: 'Hello there!' });
+    }
+
+    setTimeout(myFunc, 2000, 'funky');
+
 });
 
 // define the about route
