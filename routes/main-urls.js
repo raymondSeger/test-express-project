@@ -14,8 +14,10 @@ router.get('/', function (req, res) {
 });
 
 router.get('/use-external-functions', function (req, res) {
-    let the_result = calculate.sum(1, 2);
+    let the_result  = calculate.sum(1, 2);
+    let the_result2 = calculate.myFunction1(4,2);
     console.log(the_result);
+    console.log(the_result2);
     res.send('use-external-functions');
 });
 
