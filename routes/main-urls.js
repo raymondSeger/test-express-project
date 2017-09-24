@@ -2,6 +2,7 @@ const express   = require('express');
 const router    = express.Router();
 const fs        = require('fs');
 const os        = require('os');
+const mkdirp    = require('mkdirp');
 const calculate = require('../my_functions/calculate');
 
 // middleware 1
@@ -49,6 +50,36 @@ router.get('/use-external-functions', function (req, res) {
     console.log(the_result);
     console.log(the_result2);
     res.send('use-external-functions');
+});
+
+router.get('/use-file-system', function (req, res) {
+
+    // create directories
+    mkdirp(__dirname + '/../assets/a/b/c', function(err) {
+        // path exists unless there was an error
+        let a = ''
+    });
+
+    // read directory
+    fs.readdir(__dirname + '/../assets/', function(err, files){
+        let a =''
+    });
+
+    fs.realpath(__dirname + '/../assets/a.txt', function(err, resolvedPath){
+        let a =''
+    });
+
+    fs.readFile(__dirname + '/../assets/a.txt', function(err, data){
+        if (err) throw err;
+
+        // data is Buffer object
+        var data = data;
+        var data_length = data.length;
+        var data_in_string = data.toString('utf-8');
+        var data_in_string_length = data_in_string.length;
+    });
+
+    res.send('use-file-system');
 });
 
 router.get('/async-file-read', function (req, res) {
