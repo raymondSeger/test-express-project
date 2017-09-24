@@ -42,8 +42,6 @@ router.get('/using-timeout-nodejs', function (req, res) {
     setTimeout(myFunc, 1000, 'funky');
 });
 
-setTimeout(myFunc, 1000, 'funky');
-
 // define the about route
 router.get('/about', function (req, res) {
     res.send('About birds');
