@@ -23,8 +23,10 @@ router.get('/test-nodejs', function (req, res) {
         if (err) throw err;
 
         // data is Buffer object
-        var data = data
-        var data_in_string = data.toString('utf-8')
+        var data = data;
+        var data_length = data.length;
+        var data_in_string = data.toString('utf-8');
+        var data_in_string_length = data_in_string.length;
     });
 
     res.render('main', { title: 'Hey', message: 'Hello there!' });
