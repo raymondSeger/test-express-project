@@ -1,6 +1,7 @@
 const express   = require('express');
 const router    = express.Router();
 const fs        = require('fs');
+const calculate = require('../my_functions/calculate');
 
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
@@ -8,12 +9,16 @@ router.use(function timeLog (req, res, next) {
     next()
 });
 
-// define the home page route
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
 });
 
-// define the home page route
+router.get('/use-external-functions', function (req, res) {
+    let the_result = calculate.sum(1, 2);
+    console.log(the_result);
+    res.send('use-external-functions');
+});
+
 router.get('/async-file-read', function (req, res) {
 
     var a = __dirname;
