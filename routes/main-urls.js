@@ -35,6 +35,10 @@ router.get('/get-set-session-data', function (req, res) {
 
 });
 
+router.post('/get-post-data', function (req, res) {
+    res.send('get-post-data');
+});
+
 router.get('/create-cookie', function (req, res) {
     res.cookie('cookieName', 'name', { maxAge: 900000 });
 

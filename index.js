@@ -36,10 +36,13 @@ app.use(orm.express("mysql://root@localhost/express", {
 app.use(cookieParser());
 
 // use body-parser
+// All the parsers accept a type option which allows you to change the Content-Type that the middleware will parse.
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/*+json' }));
+app.use(bodyParser.text());
+app.use(bodyParser.raw());
 
 // Register '.handlebars' extension with The handlebars Express
 app.engine('handlebars', exphbs({extname: 'handlebars', defaultLayout: 'main', layoutsDir: __dirname + '/views/'}));
