@@ -9,7 +9,8 @@ const Promise           = require('bluebird');
 const request           = require('request');
 const fs                = require('fs');
 const morgan            = require('morgan');
-const path                = require('path');
+const path              = require('path');
+const cookieParser      = require('cookie-parser');
 const main_urls         = require('./routes/main-urls');
 
 // use ORM
@@ -20,6 +21,9 @@ app.use(orm.express("mysql://root@localhost/express", {
     }
 }));
 */
+
+// use cookie parser
+app.use(cookieParser());
 
 // use body-parser
 app.use(bodyParser.urlencoded({
@@ -34,13 +38,15 @@ app.set('view engine', 'handlebars');
 // use static files
 app.use('/public', express.static('public'));
 
-
 // use Morgan
 let accessLogStream = fs.createWriteStream(
       path.join(__dirname, '/logs/access.log'), {flags: 'a'}
  );
 // setup the logger
 app.use(morgan('combined', {stream: accessLogStream}));
+
+
+
 
 
 // Load the main urls

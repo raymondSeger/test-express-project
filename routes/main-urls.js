@@ -21,6 +21,22 @@ router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
 });
 
+router.get('/create-cookie', function (req, res) {
+    res.cookie('cookieName', 'name', { maxAge: 900000 });
+
+    res.send('create-cookie');
+});
+
+router.get('/use-cookie-parser', function (req, res) {
+    // Cookies that have not been signed
+    console.log('Cookies: ', req.cookies);
+
+    // Cookies that have been signed
+    console.log('Signed Cookies: ', req.signedCookies);
+
+    res.send('use-cookie-parser');
+});
+
 router.get('/use-os-functions', function (req, res) {
 
     let theString = os.EOL;
