@@ -24,5 +24,11 @@ router.get('/resAppend', function(req, res){
     res.send('OK');
 });
 
+router.get('/resAttachment', function(req, res){
+    // res.attachment(); // get the current file
+    res.attachment(__dirname + '../public/img/2PACKB7881_1.jpg'); // get the image
+    res.send('OK');
+});
+
 
 module.exports = router;
