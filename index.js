@@ -15,6 +15,7 @@ const session           = require('express-session');
 const FileStore         = require('session-file-store')(session);
 const fileUpload        = require('express-fileupload');
 const main_urls         = require('./routes/main-urls');
+const express_urls      = require('./routes/express-urls');
 
 // use session
 app.use(session({
@@ -71,6 +72,7 @@ app.use(morgan('combined', {stream: accessLogStream}));
 
 // Load the main urls
 app.use('/', main_urls);
+app.use('/express', express_urls);
 
 
 // socket IO connections
