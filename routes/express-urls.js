@@ -56,4 +56,8 @@ router.get('/resRedirectRender', function(req, res){
     res.render('expresstest1', { message: 'Tobi' });
 });
 
+router.get('/resSend', function(req, res){
+    res.send(new Buffer('whoop'));
+});
+
 module.exports = router;
