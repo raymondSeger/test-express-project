@@ -6,6 +6,7 @@ const os        = require('os');
 const mkdirp    = require('mkdirp');
 const favicon   = require('serve-favicon');
 const fs        = require('fs-extra');
+const moment    = require('moment');
 const calculate = require('../my_functions/calculate');
 
 // favicon
@@ -25,6 +26,10 @@ router.use(function timeLog2 (req, res, next) {
 
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
+});
+
+router.get('/useMoment', function (req, res) {
+    res.send( moment().format('MMMM Do YYYY, h:mm:ss a') );
 });
 
 router.get('/readJSON', function (req, res) {
