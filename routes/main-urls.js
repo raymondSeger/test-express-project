@@ -11,6 +11,7 @@ const request       = require('request');
 const compression   = require('compression');
 const uuidv4        = require('uuid/v4');
 const _             = require('underscore');
+const cors          = require('cors');
 const calculate     = require('../my_functions/calculate');
 
 // favicon
@@ -18,6 +19,9 @@ app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 // compression
 app.use(compression());
+
+// use CORS
+app.use(cors());
 
 // middleware 1
 router.use(function timeLog (req, res, next) {

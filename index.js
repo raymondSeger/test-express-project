@@ -15,6 +15,7 @@ const session           = require('express-session');
 const FileStore         = require('session-file-store')(session);
 const fileUpload        = require('express-fileupload');
 const favicon           = require('serve-favicon');
+const cors              = require('cors');
 const main_urls         = require('./routes/main-urls');
 const express_urls      = require('./routes/express-urls');
 
@@ -28,6 +29,9 @@ app.use(session({
 
 // use file-upload
 app.use(fileUpload());
+
+// use CORS
+app.use(cors());
 
 // favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
