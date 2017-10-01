@@ -47,4 +47,8 @@ router.get('/resLocation', function(req, res){
     res.send( res.get('X-Powered-By') );
 });
 
+router.get('/resRedirect', function(req, res){
+    res.redirect('http://example.com');
+});
+
 module.exports = router;
