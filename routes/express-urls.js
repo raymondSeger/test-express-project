@@ -19,5 +19,10 @@ router.get('/resLocals', function(req, res){
     res.send('OK');
 });
 
+router.get('/resAppend', function(req, res){
+    res.append('Warning', '199 Miscellaneous warning');
+    res.send('OK');
+});
+
 
 module.exports = router;
