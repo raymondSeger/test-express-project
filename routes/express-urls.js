@@ -12,4 +12,12 @@ router.get('/headersSent', function(req, res){
       console.log(res.headersSent); // true
 });
 
+router.get('/resLocals', function(req, res){
+    res.locals.age = 20;
+    res.locals.name = 'Jett';
+    b = res.locals;
+    res.send('OK');
+});
+
+
 module.exports = router;
