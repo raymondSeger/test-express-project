@@ -6,4 +6,10 @@ router.get('/user/:id', function(req, res){
     res.send('user ' + req.params.id);
 });
 
+router.get('/headersSent', function(req, res){
+      console.log(res.headersSent); // false
+      res.send('OK');
+      console.log(res.headersSent); // true
+});
+
 module.exports = router;
