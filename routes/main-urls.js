@@ -13,6 +13,7 @@ const uuidv4        = require('uuid/v4');
 const _             = require('underscore');
 const cors          = require('cors');
 const chalk         = require('chalk');
+const config        = require('config');
 const calculate     = require('../my_functions/calculate');
 
 // favicon
@@ -38,6 +39,17 @@ router.use(function timeLog2 (req, res, next) {
 
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
+});
+
+router.get('/useConfig', function (req, res) {
+
+    let dbConfig    = config.get('Customer.dbConfig');
+    let detail      = '';
+
+    if (config.has('optionalFeature.detail')) {
+        detail = config.get('optionalFeature.detail');
+    }
+    res.send( dbConfig.host + " " +  detail );
 });
 
 router.get('/useChalk', function (req, res) {
