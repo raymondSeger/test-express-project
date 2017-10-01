@@ -13,6 +13,7 @@ const path              = require('path');
 const cookieParser      = require('cookie-parser');
 const session           = require('express-session');
 const FileStore         = require('session-file-store')(session);
+const fileUpload        = require('express-fileupload');
 const main_urls         = require('./routes/main-urls');
 
 // use session
@@ -22,6 +23,9 @@ app.use(session({
     resave              : false,
     saveUninitialized   : true
 }));
+
+// use file-upload
+app.use(fileUpload());
 
 // use ORM
 /*
@@ -49,7 +53,10 @@ app.engine('handlebars', exphbs({extname: 'handlebars', defaultLayout: 'main', l
 app.set('view engine', 'handlebars');
 
 // use static files
-app.use('/public', express.static('public'));
+app.use('/public', express.static('public', {
+    'etag' : false,
+    'lastModified' : true
+}));
 
 // use Morgan
 let accessLogStream = fs.createWriteStream(
