@@ -34,5 +34,9 @@ router.get('/resDownload', function(req, res){
     res.download(__dirname + '/../public/img/2PACKB7881_1.jpg'); // get the image
 });
 
+router.get('/resGet', function(req, res){
+    res.send( res.get('X-Powered-By') );
+});
+
 
 module.exports = router;
