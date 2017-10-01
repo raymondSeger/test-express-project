@@ -60,4 +60,16 @@ router.get('/resSend', function(req, res){
     res.send(new Buffer('whoop'));
 });
 
+router.all('/reqGetPostDataIncludingCookies', function(req, res){
+
+    a = req.app;
+    c = req.body;
+    d = req.cookies;
+    e = req.fresh;
+    f = req.params;
+    g = req.query;
+
+    res.send('whoop');
+});
+
 module.exports = router;
