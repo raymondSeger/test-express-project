@@ -38,5 +38,13 @@ router.get('/resGet', function(req, res){
     res.send( res.get('X-Powered-By') );
 });
 
+router.get('/resJSON', function(req, res){
+    res.status(500).json({ error: 'message' });
+});
+
+router.get('/resLocation', function(req, res){
+    res.location('http://example.com');
+    res.send( res.get('X-Powered-By') );
+});
 
 module.exports = router;
