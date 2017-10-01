@@ -7,6 +7,7 @@ const mkdirp    = require('mkdirp');
 const favicon   = require('serve-favicon');
 const fs        = require('fs-extra');
 const moment    = require('moment');
+const request   = require('request');
 const calculate = require('../my_functions/calculate');
 
 // favicon
@@ -27,6 +28,15 @@ router.use(function timeLog2 (req, res, next) {
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
 });
+
+router.get('/useRequest', function (req, res) {
+    request('http://www.google.com', function (error, response, body) {
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        res.send( body ); // Print the HTML for the Google homepage.
+    });
+});
+
 
 router.get('/useMoment', function (req, res) {
     res.send( moment().format('MMMM Do YYYY, h:mm:ss a') );
