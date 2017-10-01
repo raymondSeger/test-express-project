@@ -1,16 +1,17 @@
-const express   = require('express');
-const router    = express.Router();
-const app       = express();
-const path      = require('path');
-const os        = require('os');
-const mkdirp    = require('mkdirp');
-const favicon   = require('serve-favicon');
-const fs        = require('fs-extra');
-const moment    = require('moment');
-const request   = require('request');
-const compression = require('compression');
+const express       = require('express');
+const router        = express.Router();
+const app           = express();
+const path          = require('path');
+const os            = require('os');
+const mkdirp        = require('mkdirp');
+const favicon       = require('serve-favicon');
+const fs            = require('fs-extra');
+const moment        = require('moment');
+const request       = require('request');
+const compression   = require('compression');
 const uuidv4        = require('uuid/v4');
-const calculate = require('../my_functions/calculate');
+const _             = require('underscore');
+const calculate     = require('../my_functions/calculate');
 
 // favicon
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
@@ -36,6 +37,15 @@ router.get('/', function (req, res) {
 
 router.get('/useUUID', function (req, res) {
     res.send( uuidv4() );
+});
+
+router.get('/useUnderscore', function (req, res) {
+
+    let the_returned_array = _.countBy([1, 2, 3, 4, 5], function(num) {
+        return num % 2 == 0 ? 'even': 'odd';
+    });
+
+    res.send( the_returned_array );
 });
 
 router.get('/useRequest', function (req, res) {
