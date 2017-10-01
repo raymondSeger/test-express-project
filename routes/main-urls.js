@@ -2,10 +2,10 @@ const express   = require('express');
 const router    = express.Router();
 const app       = express();
 const path      = require('path');
-const fs        = require('fs');
 const os        = require('os');
 const mkdirp    = require('mkdirp');
 const favicon   = require('serve-favicon');
+const fs        = require('fs-extra');
 const calculate = require('../my_functions/calculate');
 
 // favicon
@@ -25,6 +25,23 @@ router.use(function timeLog2 (req, res, next) {
 
 router.get('/', function (req, res) {
     res.render('main', { title: 'Hey', message: 'Hello there!' });
+});
+
+router.get('/readJSON', function (req, res) {
+
+    fs.readJson( __dirname + '/../public/example.json', (err, packageObj) => {
+      if (err) console.error(err);
+
+      console.log(packageObj)
+    });
+
+    fs.writeJson(__dirname + '/../public/example2.json', {name: 'fs-extra', age: 20}, err => {
+        if (err) return console.error(err);
+
+        console.log('success!')
+    });
+
+    res.send('readJSON');
 });
 
 router.get('/get-set-session-data', function (req, res) {
