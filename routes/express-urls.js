@@ -30,5 +30,9 @@ router.get('/resAttachment', function(req, res){
     res.send('OK');
 });
 
+router.get('/resDownload', function(req, res){
+    res.download(__dirname + '/../public/img/2PACKB7881_1.jpg'); // get the image
+});
+
 
 module.exports = router;
