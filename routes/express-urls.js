@@ -51,4 +51,9 @@ router.get('/resRedirect', function(req, res){
     res.redirect('http://example.com');
 });
 
+router.get('/resRedirectRender', function(req, res){
+    res.locals.fromLocal = 20; // not detected in view
+    res.render('expresstest1', { message: 'Tobi' });
+});
+
 module.exports = router;
