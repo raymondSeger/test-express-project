@@ -1,9 +1,15 @@
 const express   = require('express');
 const router    = express.Router();
+const app       = express();
+const path      = require('path');
 const fs        = require('fs');
 const os        = require('os');
 const mkdirp    = require('mkdirp');
+const favicon   = require('serve-favicon');
 const calculate = require('../my_functions/calculate');
+
+// favicon
+app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 // middleware 1
 router.use(function timeLog (req, res, next) {
