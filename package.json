@@ -6,6 +6,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.1",
+    "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "express-fileupload": "^0.2.0",
@@ -23,7 +24,8 @@
     "request": "^2.81.0",
     "serve-favicon": "^2.4.5",
     "session-file-store": "^1.1.2",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
