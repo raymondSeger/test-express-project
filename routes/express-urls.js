@@ -1,5 +1,10 @@
-const express   = require('express');
-const router    = express.Router();
+const express       = require('express');
+const router        = express.Router();
+const fileUpload    = require('express-fileupload');
+const app           = express();
+
+// use file-upload
+app.use(fileUpload());
 
 router.get('/user/:id', function(req, res){
     // get URL param value
@@ -70,6 +75,23 @@ router.all('/reqGetPostDataIncludingCookies', function(req, res){
     g = req.query;
 
     res.send('whoop');
+});
+
+router.post('/upload', function(req, res) {
+    // THIS WILL ONLY WORK if there is no application/x-www-form-urlencoded header, this works because of express-fileupload
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    let sampleFile = req.files.sampleFile;
+
+    // Use the mv() method to place the file somewhere on your server
+    sampleFile.mv(__dirname + '/../uploads/' + sampleFile.name , function(err) {
+        if (err)
+            return res.status(500).send(err);
+
+        res.send('File uploaded!');
+    });
 });
 
 module.exports = router;
